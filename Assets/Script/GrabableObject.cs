@@ -50,7 +50,7 @@ public class GrabableObject : MonoBehaviour
             case 0:
                 //furnace
                 painDelay = 0;
-                Debug.Log("nnnnnnnnnnnnnnnnn");
+                Debug.Log("aled ausecour");
                 break;
             case 1:
                 //water
@@ -62,6 +62,11 @@ public class GrabableObject : MonoBehaviour
                 break;
             case 3:
                 //knife
+                Debug.Log("aiouch euurrghhh");
+                painDelay = 0;
+                break;
+            case 4:
+                //pan
                 painDelay = 0;
                 break;
         }
