@@ -1,70 +1,62 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FaceManager : MonoBehaviour
 {
-
     [SerializeField] private List<Sprite> eyes;
     [SerializeField] private List<Sprite> mouths;
-    [SerializeField] private List<int> states;
-
-    public void Start()
-    {
-        #region DEBUG - Conditions
-
-        #region Eyes
-        bool conditionEyesLeft = Input.GetKeyDown(KeyCode.Alpha1);
-        bool conditionEyesRight = Input.GetKeyDown(KeyCode.Alpha3);
-        #endregion
-
-        #region Mouths
-        bool conditionMouthLeft = Input.GetKeyDown(KeyCode.Alpha7);
-        bool conditionMouthRight = Input.GetKeyDown(KeyCode.Alpha9);
-        #endregion
-
-        #endregion
-
-    }
 
     public void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            StateCommand(0);
+            StateCommand(SO_FaceStates.BasicStates.Scared);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            StateCommand(1);
+            StateCommand(SO_FaceStates.BasicStates.Mad);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            StateCommand(2);
+            StateCommand(SO_FaceStates.BasicStates.Kawaii);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            StateCommand(SO_FaceStates.BasicStates.Dead);
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            StateCommand(SO_FaceStates.BasicStates.Bored);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            StateCommand(SO_FaceStates.BasicStates.Shy);
         }
 
     }
 
-    public void StateCommand(int stateIndex)
+    public void StateCommand(SO_FaceStates.BasicStates stateIndex)
     {
         SelectEyes(stateIndex);
         SelectMouths(stateIndex);
+
     }
 
-    private void SelectEyes(int eyeIndex)
+    private void SelectEyes(SO_FaceStates.BasicStates eyeState)
     {
+        int eyeIndex = Array.IndexOf(Enum.GetValues(typeof(SO_FaceStates.BasicStates)), eyeState);
 
-        Debug.Log(eyes[eyeIndex]);
+        GameObject.Find("Eyes").GetComponent<SpriteRenderer>().sprite = eyes[eyeIndex];
+
     }
 
-    private void SelectMouths(int mouthIndex)
+    private void SelectMouths(SO_FaceStates.BasicStates mouthState)
     {
-        Debug.Log(mouths[mouthIndex]);
-    }
+        int mouthIndex = Array.IndexOf(Enum.GetValues(typeof(SO_FaceStates.BasicStates)), mouthState);
 
-    private void InitElements(SpriteRenderer sprites)
-    {
-        
+        GameObject.Find("Mouth").GetComponent<SpriteRenderer>().sprite = mouths[mouthIndex];
+
+
     }
 }
