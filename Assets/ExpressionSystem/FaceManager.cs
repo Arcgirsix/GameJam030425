@@ -7,11 +7,15 @@ public class FaceManager : MonoBehaviour
     [SerializeField] private List<Sprite> eyes;
     [SerializeField] private List<Sprite> mouths;
 
+    [SerializeField] private SO_FaceStates.BasicStates currentState;
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             StateCommand(SO_FaceStates.BasicStates.Scared);
+            currentState = SO_FaceStates.BasicStates.Scared;
+            Debug.Log(currentState.ToString());
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -34,6 +38,7 @@ public class FaceManager : MonoBehaviour
             StateCommand(SO_FaceStates.BasicStates.Shy);
         }
 
+        
     }
 
     public void StateCommand(SO_FaceStates.BasicStates stateIndex)

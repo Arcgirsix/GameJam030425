@@ -460,7 +460,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -550660828, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  m_Sprite: {fileID: 1118060659, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -480,7 +480,7 @@ Transform:
   m_GameObject: {fileID: 1017203481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -276.66595, y: -50, z: -20.78}
+  m_LocalPosition: {x: 0, y: 0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -496,6 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1543153406}
   - component: {fileID: 1543153407}
+  - component: {fileID: 1543153408}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -512,7 +513,7 @@ Transform:
   m_GameObject: {fileID: 1543153405}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 276.66595, y: 50.41356, z: 21.00613}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -553,6 +554,22 @@ MonoBehaviour:
   - {fileID: 152563694, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
   - {fileID: -92555470, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
   - {fileID: -2113230838, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  currentState: 0
+--- !u!114 &1543153408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543153405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295c937429a4fd940bdd10fdb82f071c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationsClips:
+  - {fileID: 7400000, guid: b8727e135a4b82842be6a42d1b395635, type: 2}
+  FaceManager: {fileID: 0}
 --- !u!1 &1588679166
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1661098500}
   - component: {fileID: 1661098499}
+  - component: {fileID: 1661098501}
   m_Layer: 0
   m_Name: Mouth
   m_TagString: Untagged
@@ -682,7 +700,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 152563694, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  m_Sprite: {fileID: -2036685886, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -702,12 +720,34 @@ Transform:
   m_GameObject: {fileID: 1661098498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -276.66595, y: -50.69, z: -20.78}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1543153406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1661098501
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661098498}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89c1d193e6570ae48bd44d5addc2195c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
