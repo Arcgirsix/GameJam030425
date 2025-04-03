@@ -9,6 +9,7 @@ public class PlayerGrab : MonoBehaviour
 
     [SerializeField] private LayerMask itemLayer = 3;
     [SerializeField] private LayerMask interactableLayer = 3;
+    [SerializeField] private LayerMask buttonLayer = 3;
 
     private InputSystem_Actions inputActions;
     private InputAction interactAction => inputActions.Player.Interact;
@@ -16,6 +17,7 @@ public class PlayerGrab : MonoBehaviour
     [SerializeField] private Transform objectGrabPointTransform;
     private GrabableObject grabableObject;
     private Interactable interactable;
+    private Button button;
 
     private void Awake()
     {
@@ -67,7 +69,15 @@ public class PlayerGrab : MonoBehaviour
             grabableObject = null;
             return;
         }
-        
+
+        if (Physics.Raycast(targ, out RaycastHit raycastHitButton_, range, buttonLayer))
+        {
+            if (raycastHitButton_.collider.TryGetComponent(out button))
+            {
+                button._Button();
+                return;
+            }
+        }
 
         if (Physics.Raycast(targ, out RaycastHit raycastHitInteractable, range, interactableLayer))
         {

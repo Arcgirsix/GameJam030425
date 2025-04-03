@@ -6,6 +6,8 @@ public class GrabableObject : MonoBehaviour
     private Rigidbody objectRB;
     private Transform objectGrabPointTransform;
     [SerializeField] private float lerpSpeed;
+    [SerializeField] private float painDelay;
+    private float painTimer = 5f;
 
     private void Awake()
     {
@@ -31,6 +33,37 @@ public class GrabableObject : MonoBehaviour
         {
             Vector3 nextPos = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.fixedDeltaTime * lerpSpeed);
             objectRB.MovePosition(nextPos);
+        }
+    }
+
+    public void Pain(int typeOfPain)
+    {
+        if (painDelay < painTimer)
+        {
+            painDelay += Time.deltaTime;
+            return;
+        }
+
+
+        switch (typeOfPain)
+        {
+            case 0:
+                //furnace
+                painDelay = 0;
+                Debug.Log("nnnnnnnnnnnnnnnnn");
+                break;
+            case 1:
+                //water
+                painDelay = 0;
+                break;
+            case 2:
+                //oil
+                painDelay = 0;
+                break;
+            case 3:
+                //knife
+                painDelay = 0;
+                break;
         }
     }
 }

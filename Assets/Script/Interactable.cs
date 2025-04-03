@@ -24,6 +24,7 @@ public class Interactable : MonoBehaviour
     private void On()
     {
         animator.SetTrigger("HasBeenInteracted");
+
     }
 
     private void Off()
