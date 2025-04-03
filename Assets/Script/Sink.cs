@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class CookingFurnace : MonoBehaviour
+public class Sink : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Item")
         {
-            other.GetComponentInParent<GrabableObject>().Pain(0);
+            other.GetComponentInParent<GrabableObject>().Pain(1);
         }
     }
 }
