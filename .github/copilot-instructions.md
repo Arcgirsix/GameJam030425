@@ -1,8 +1,8 @@
 <!-- UNITY CODE ASSIST INSTRUCTIONS START -->
-- Project name: GmaeJam030425
+- Project name: GameJam030425
 - Unity version: Unity 6000.0.44f1
 - Active game object:
-  - Name: Apple
+  - Name: Head
   - Tag: Untagged
-  - Layer: ItemLayer
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
