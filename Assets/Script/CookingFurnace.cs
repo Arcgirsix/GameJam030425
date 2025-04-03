@@ -4,9 +4,9 @@ public class CookingFurnace : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<GrabableObject>() != null)
+        if (other.tag == "Item")
         {
-            other.gameObject.GetComponent<GrabableObject>().Pain(0);
+            other.GetComponentInParent<GrabableObject>().Pain(0);
         }
     }
 }

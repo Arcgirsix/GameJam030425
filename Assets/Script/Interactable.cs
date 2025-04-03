@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
+        Debug.Log("aaaaaaaaaaaaaaaaa");
         if (!isOn)
         {
             On();
