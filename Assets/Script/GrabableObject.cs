@@ -81,10 +81,12 @@ public class GrabableObject : MonoBehaviour
                 //knife
                 Debug.Log("aiouch euurrghhh");
                 painDelay = 0;
+
                 PainEffects(typeOfPain, painState);
                 break;
             case 4:
                 //pan
+
                 painDelay = 0;
                 PainEffects(typeOfPain, painState);
                 break;
