@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,17 +14,35 @@ public class PlayerGrab : MonoBehaviour
 
     private InputSystem_Actions inputActions;
     private InputAction interactAction => inputActions.Player.Interact;
+    private InputAction scrollAction => inputActions.Player.ScrollWheel;
+
+    private float scrollDir;
 
     [SerializeField] private Transform objectGrabPointTransform;
+    private Vector3 objectGrabPointBasePosition;
     private GrabableObject grabableObject;
     private Interactable interactable;
     private Button button;
 
     private void Awake()
     {
+        objectGrabPointBasePosition = objectGrabPointTransform.localPosition;
+
         inputActions = new InputSystem_Actions();
 
         interactAction.performed += InteractAction_performed;
+        scrollAction.performed += ScrollAction_performed;
+        scrollAction.canceled += ScrollAction_canceled;
+    }
+
+    private void ScrollAction_canceled(InputAction.CallbackContext obj)
+    {
+        scrollDir = scrollAction.ReadValue<float>();
+    }
+
+    private void ScrollAction_performed(InputAction.CallbackContext obj)
+    {
+        scrollDir = scrollAction.ReadValue<float>();
     }
 
     private void InteractAction_performed(InputAction.CallbackContext obj)
@@ -34,16 +53,23 @@ public class PlayerGrab : MonoBehaviour
     private void OnEnable()
     {
         interactAction.Enable();
+        scrollAction.Enable();
     }
 
     private void OnDisable()
     {
         interactAction.Disable();
+        scrollAction.Disable();
     }
 
     private void Start()
     {
         cam = Camera.main;
+    }
+
+    private void Update()
+    {
+        objectGrabPointTransform.Translate(new Vector3(0f,0f, scrollDir * 10 * Time.deltaTime));
     }
 
     private void Grab()
@@ -67,6 +93,9 @@ public class PlayerGrab : MonoBehaviour
         {
             grabableObject.Drop();
             grabableObject = null;
+
+            objectGrabPointTransform.localPosition = objectGrabPointBasePosition;
+
             return;
         }
 

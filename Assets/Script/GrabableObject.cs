@@ -7,7 +7,9 @@ public class GrabableObject : MonoBehaviour
     private Transform objectGrabPointTransform;
     [SerializeField] private float lerpSpeed;
     [SerializeField] private float painDelay;
+    [SerializeField] private bool notIngredient = false;
     private float painTimer = 5f;
+    [SerializeField] private Collider knifeCollider;
 
     private void Awake()
     {
@@ -15,16 +17,20 @@ public class GrabableObject : MonoBehaviour
     }
     public void Grab(Transform objectGrabPointTransform)
     {
+        knifeCollider.enabled = true;
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRB.useGravity = false;
         objectRB.linearDamping = 10f;
+        objectRB.angularDamping = 10f;
     }
 
     public void Drop()
     {
+        knifeCollider.enabled = false;
         this.objectGrabPointTransform = null;
         objectRB.useGravity = true;
         objectRB.linearDamping = 1f;
+        objectRB.angularDamping = 0.05f;
     }
 
     private void FixedUpdate()
@@ -38,6 +44,11 @@ public class GrabableObject : MonoBehaviour
 
     public void Pain(int typeOfPain)
     {
+        if (notIngredient)
+        {
+            return;
+        }
+
         if (painDelay < painTimer)
         {
             painDelay += Time.deltaTime;

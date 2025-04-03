@@ -8,11 +8,7 @@ public class CookingFurnace : MonoBehaviour
     {
         if (other.tag == "Item")
         {
-<<<<<<< Updated upstream
-            Debug.Log(other);
-=======
             other.GetComponentInParent<GrabableObject>().Pain(0);
->>>>>>> Stashed changes
         }
     }
 }
