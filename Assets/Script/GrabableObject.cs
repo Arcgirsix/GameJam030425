@@ -1,4 +1,5 @@
 using UnityEngine;
+using static SO_FaceStates;
 
 public class GrabableObject : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GrabableObject : MonoBehaviour
     [SerializeField] private Collider knifeCollider;
 
     [SerializeField] private int painState = 0;
+
+    public FaceManager faceManager;
+    public AudioManager audioManager;
+    //public SO_FaceStates state;
 
     private void Awake()
     {
@@ -63,22 +68,42 @@ public class GrabableObject : MonoBehaviour
             case 0:
                 //furnace
                 painDelay = 0;
+
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Shocked);
+                audioManager.AudioCommand(SO_FaceStates.Audio.Pain);
+
+                GetComponent<AudioSource>().Play();
+
                 Debug.Log("aled ausecour");
+
                 PainEffects(typeOfPain, painState);
+
+                audioManager.enabled = false;
+
                 break;
             case 1:
                 //water
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Shocked);
+                audioManager.AudioCommand(SO_FaceStates.Audio.Drowning);
+
+                GetComponent<AudioSource>().Play();
+
                 Debug.Log("ydfavfauydauyhdvzautvd");
                 painDelay = 0;
                 PainEffects(typeOfPain, painState);
+
+                audioManager.enabled = false;
+
                 break;
             case 2:
                 //oil
                 painDelay = 0;
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Mad);
                 PainEffects(typeOfPain, painState);
                 break;
             case 3:
                 //knife
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Shy);
                 Debug.Log("aiouch euurrghhh");
                 painDelay = 0;
 
@@ -86,7 +111,7 @@ public class GrabableObject : MonoBehaviour
                 break;
             case 4:
                 //pan
-
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Dead);
                 painDelay = 0;
                 PainEffects(typeOfPain, painState);
                 break;
