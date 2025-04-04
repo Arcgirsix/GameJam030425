@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using static SO_FaceStates;
 
 public class GrabableObject : MonoBehaviour
@@ -14,12 +15,17 @@ public class GrabableObject : MonoBehaviour
 
     [SerializeField] private int painState = 0;
 
+    [Header("## Managers ## ")]
     public FaceManager faceManager;
     public AudioManager audioManager;
+    //public AnimationManager animationManager;
+
     [SerializeField] private GameObject spriteGameObject;
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private bool isAlive = false;
-    //public SO_FaceStates state;
+
+    [SerializeField] private SO_FaceStates.Items itemType;
+
 
     private void Awake()
     {
@@ -44,7 +50,7 @@ public class GrabableObject : MonoBehaviour
 
         if (notIngredient)
         {
-            knifeCollider.enabled = false;
+            knifeCollider.enabled = true;
         }
     }
 
@@ -54,9 +60,10 @@ public class GrabableObject : MonoBehaviour
         meshRenderer.enabled = false;
     }
 
+        
     public void Drop()
     {
-        
+
         this.objectGrabPointTransform = null;
         objectRB.useGravity = true;
         objectRB.linearDamping = 1f;
@@ -66,11 +73,12 @@ public class GrabableObject : MonoBehaviour
         {
             knifeCollider.enabled = false;
         }
-    }
+
+}
 
     private void FixedUpdate()
     {
-        if ( objectGrabPointTransform !=null)
+        if (objectGrabPointTransform != null)
         {
             Vector3 nextPos = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.fixedDeltaTime * lerpSpeed);
             objectRB.MovePosition(nextPos);
@@ -97,28 +105,34 @@ public class GrabableObject : MonoBehaviour
                 //furnace
                 painDelay = 0;
 
-                faceManager.StateCommand(SO_FaceStates.BasicStates.Shocked);
-                audioManager.AudioCommand(SO_FaceStates.Audio.Pain);
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Scared);
+                audioManager.AudioCommand(SO_FaceStates.AudioStates.Pain, itemType);
+                //animationManager.AnimationCommand(SO_FaceStates.AnimationEffect.ScaleVertical);
+
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Dead);
+                SoundsLikeA(SO_FaceStates.AudioStates.BigPain, itemType);
 
                 GetComponent<AudioSource>().Play();
 
-                Debug.Log("aled ausecour");
+                //Debug.Log("aled ausecour");
 
                 PainEffects(typeOfPain, painState);
 
+                //animationManager.AnimationCommand(SO_FaceStates.AnimationEffect.NoTransform);
                 audioManager.enabled = false;
 
                 break;
             case 1:
                 //water
-                Debug.Log("ydfavfauydauyhdvzautvd");
 
+                //Debug.Log("ydfavfauydauyhdvzautvd");
 
                 faceManager.StateCommand(SO_FaceStates.BasicStates.Shocked);
-                audioManager.AudioCommand(SO_FaceStates.Audio.Drowning);
+                SoundsLikeA(SO_FaceStates.AudioStates.Drowning, itemType);
 
                 GetComponent<AudioSource>().Play();
 
+                //Debug.Log("ydfavfauydauyhdvzautvd");
                 painDelay = 0;
                 PainEffects(typeOfPain, painState);
 
@@ -129,26 +143,47 @@ public class GrabableObject : MonoBehaviour
                 //oil
                 painDelay = 0;
                 faceManager.StateCommand(SO_FaceStates.BasicStates.Mad);
+                SoundsLikeA(SO_FaceStates.AudioStates.Pleasure, itemType);
+
+                GetComponent<AudioSource>().Play();
+
                 PainEffects(typeOfPain, painState);
+
+                audioManager.enabled = false;
+
                 break;
             case 3:
                 //knife
                 faceManager.StateCommand(SO_FaceStates.BasicStates.Shy);
-                Debug.Log("aiouch euurrghhh");
+                SoundsLikeA(SO_FaceStates.AudioStates.Pleasure, itemType);
+
+                GetComponent<AudioSource>().Play();
+
+                //Debug.Log("aiouch euurrghhh");
                 painDelay = 0;
 
                 PainEffects(typeOfPain, painState);
+
+                audioManager.enabled = false;
+
                 break;
             case 4:
                 //pan
                 faceManager.StateCommand(SO_FaceStates.BasicStates.Dead);
+                SoundsLikeA(SO_FaceStates.AudioStates.BigPain, itemType);
+
+                GetComponent<AudioSource>().Play();
+
                 painDelay = 0;
+
                 PainEffects(typeOfPain, painState);
+
+                audioManager.enabled = false;
                 break;
         }
     }
 
-    private void PainEffects(int  typeOfPain, int _painState)
+    private void PainEffects(int typeOfPain, int _painState)
     {
         if (_painState >= 4)
         {
@@ -202,7 +237,7 @@ public class GrabableObject : MonoBehaviour
             painState = 3;
         }
 
-        if (_painState == 1) 
+        if (_painState == 1)
         {
             switch (typeOfPain)
             {
@@ -251,6 +286,11 @@ public class GrabableObject : MonoBehaviour
 
     private void OnDestroy()
     {
-        
+
+    }
+
+    private void SoundsLikeA(SO_FaceStates.AudioStates audioStates, SO_FaceStates.Items item )
+    {
+        audioManager.AudioCommand(audioStates, item);
     }
 }

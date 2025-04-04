@@ -1,6 +1,3 @@
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FaceStates", menuName = "Scriptable Objects/FaceStates")]
@@ -20,11 +17,31 @@ public class SO_FaceStates : ScriptableObject
         Shocked
     }
 
-    public enum Audio
+    public enum AudioStates
     {
         Pain,
         BigPain,
         Pleasure,
-        Drowning
+        Drowning,
+        Surprise,
+        Scared,
+        Cute
+    }
+
+    public enum Items
+    {
+        Tomato,
+        Potato,
+        Carrot,
+        Egg,
+        Steak
+    }
+
+    public enum AnimationEffect
+    {
+        NoTransform,
+        ScaleVertical,
+        ScaleHorizontal,
+        Shake,
     }
 }
