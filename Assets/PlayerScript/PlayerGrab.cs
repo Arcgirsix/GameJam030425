@@ -69,7 +69,7 @@ public class PlayerGrab : MonoBehaviour
 
     private void Update()
     {
-        objectGrabPointTransform.Translate(new Vector3(0f,0f, scrollDir * 10 * Time.deltaTime));
+        objectGrabPointTransform.Translate(new Vector3(0f,0f, scrollDir * 30 * Time.deltaTime));
     }
 
     private void Grab()

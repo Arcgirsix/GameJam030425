@@ -3,10 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] private float borderViewFieldDown = 25f;
+    [SerializeField] private float borderViewFieldDown = 90f;
     [SerializeField] private float borderViewFieldUp = -90f;
 
-    [SerializeField] private float mouseSensibility = 10f;
+    [SerializeField] private float mouseSensibility = 30f;
 
     [SerializeField] private Transform headTransform;
 

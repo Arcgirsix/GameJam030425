@@ -16,6 +16,9 @@ public class GrabableObject : MonoBehaviour
 
     public FaceManager faceManager;
     public AudioManager audioManager;
+    [SerializeField] private GameObject spriteGameObject;
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private bool isAlive = false;
     //public SO_FaceStates state;
 
     private void Awake()
@@ -24,20 +27,41 @@ public class GrabableObject : MonoBehaviour
     }
     public void Grab(Transform objectGrabPointTransform)
     {
-        knifeCollider.enabled = true;
+        if (isAlive == false)
+        {
+            GetAlive();
+            isAlive = true;
+        }
+
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRB.useGravity = false;
         objectRB.linearDamping = 10f;
         objectRB.angularDamping = 10f;
+
+        if (notIngredient)
+        {
+            knifeCollider.enabled = false;
+        }
+    }
+
+    private void GetAlive()
+    {
+        spriteGameObject.SetActive(true);
+        meshRenderer.enabled = false;
     }
 
     public void Drop()
     {
-        knifeCollider.enabled = false;
+        
         this.objectGrabPointTransform = null;
         objectRB.useGravity = true;
         objectRB.linearDamping = 1f;
         objectRB.angularDamping = 0.05f;
+
+        if (notIngredient)
+        {
+            knifeCollider.enabled = false;
+        }
     }
 
     private void FixedUpdate()
