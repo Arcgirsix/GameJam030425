@@ -32,17 +32,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3046626595993115657, guid: eaa315331e8586243a834d21cad6aed2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3656182078641908901, guid: eaa315331e8586243a834d21cad6aed2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3656182078641908901, guid: eaa315331e8586243a834d21cad6aed2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3656182078641908901, guid: eaa315331e8586243a834d21cad6aed2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3656182078641908901, guid: eaa315331e8586243a834d21cad6aed2, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -72,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1173269628, guid: 10da22771c7bfa44683a03af7c14a88f, type: 3}
+    - target: {fileID: 6436674558671060988, guid: eaa315331e8586243a834d21cad6aed2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6669046958482177711, guid: eaa315331e8586243a834d21cad6aed2, type: 3}
       propertyPath: m_Name
       value: Tomato Variant

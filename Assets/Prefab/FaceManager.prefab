@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8084671175245807207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485427734784263902}
+  - component: {fileID: 831486925549285732}
+  m_Layer: 0
+  m_Name: FaceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485427734784263902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084671175245807207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -88.50933, y: 1.2530171, z: -56.102375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &831486925549285732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084671175245807207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ff7aba6ba467748855fbeada874456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyes:
+  - {fileID: -1112229894, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 1118060659, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: -1577750161, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 1100325282, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 2132192781, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 1594175082, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: -550660828, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 2124368285, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: -2097284462, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  mouths:
+  - {fileID: -747991991, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: -2036685886, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 739237501, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 1015395890, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 1826817161, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 861755286, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: 152563694, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: -92555470, guid: e09187fbdd69c14448fc62359207dc00, type: 3}
+  - {fileID: -2113230838, guid: e09187fbdd69c14448fc62359207dc00, type: 3}

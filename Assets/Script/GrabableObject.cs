@@ -107,12 +107,14 @@ public class GrabableObject : MonoBehaviour
                 break;
             case 1:
                 //water
+                Debug.Log("ydfavfauydauyhdvzautvd");
+
+
                 faceManager.StateCommand(SO_FaceStates.BasicStates.Shocked);
                 audioManager.AudioCommand(SO_FaceStates.Audio.Drowning);
 
                 GetComponent<AudioSource>().Play();
 
-                Debug.Log("ydfavfauydauyhdvzautvd");
                 painDelay = 0;
                 PainEffects(typeOfPain, painState);
 

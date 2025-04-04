@@ -7,6 +7,9 @@ public class FaceManager : MonoBehaviour
     [SerializeField] private List<Sprite> eyes;
     [SerializeField] private List<Sprite> mouths;
 
+    [SerializeField] private SpriteRenderer spriteEyes;
+    [SerializeField] private SpriteRenderer spriteMouth;
+
     //[SerializeField] string currentState;
 
     public void Update()
@@ -66,13 +69,14 @@ public class FaceManager : MonoBehaviour
     {
         int eyeIndex = Array.IndexOf(Enum.GetValues(typeof(SO_FaceStates.BasicStates)), eyeState);
 
-        GameObject.Find("Eyes").GetComponent<SpriteRenderer>().sprite = eyes[eyeIndex];
+        spriteEyes.sprite = eyes[eyeIndex];
+        
     }
 
     private void SelectMouths(SO_FaceStates.BasicStates mouthState)
     {
         int mouthIndex = Array.IndexOf(Enum.GetValues(typeof(SO_FaceStates.BasicStates)), mouthState);
 
-        GameObject.Find("Mouth").GetComponent<SpriteRenderer>().sprite = mouths[mouthIndex];
+        spriteMouth.sprite = mouths[mouthIndex];
     }
 }
