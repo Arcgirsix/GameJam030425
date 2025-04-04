@@ -15,47 +15,47 @@ public class FaceManager : MonoBehaviour
     public void Update()
     {
         #region ###--- D E B U G ---###
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.E))
         {
             StateCommand(SO_FaceStates.BasicStates.Scared);
 
-            //currentState = SO_FaceStates.BasicStates.Scared.ToString();
+            currentState = SO_FaceStates.BasicStates.Scared.ToString();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             StateCommand(SO_FaceStates.BasicStates.Mad);
 
-            //currentState = SO_FaceStates.BasicStates.Mad.ToString();
+            currentState = SO_FaceStates.BasicStates.Mad.ToString();
 
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
             StateCommand(SO_FaceStates.BasicStates.Kawaii);
 
-            //currentState = SO_FaceStates.BasicStates.Kawaii.ToString();
+            currentState = SO_FaceStates.BasicStates.Kawaii.ToString();
 
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             StateCommand(SO_FaceStates.BasicStates.Dead);
 
-            //currentState = SO_FaceStates.BasicStates.Dead.ToString();
+            currentState = SO_FaceStates.BasicStates.Dead.ToString();
 
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
             StateCommand(SO_FaceStates.BasicStates.Bored);
 
-            //currentState = SO_FaceStates.BasicStates.Bored.ToString();
+            currentState = SO_FaceStates.BasicStates.Bored.ToString();
 
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
             StateCommand(SO_FaceStates.BasicStates.Shy);
 
-            //currentState = SO_FaceStates.BasicStates.Shy.ToString();
+            currentState = SO_FaceStates.BasicStates.Shy.ToString();
 
-        }
+        }*/
         #endregion
     }
 

@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CookillSceneManager : MonoBehaviour
+
+namespace Cookill.SceneManagement
 {
-    public int thisScene;
-    [SerializeField] private List<GameObject> menu;
-
-    public void SceneSelection(int sceneIndex)
+    public class CookillSceneManager : MonoBehaviour
     {
-        thisScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        public int thisScene;
+        [SerializeField] private List<GameObject> menu;
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+        public void SceneSelection(int sceneIndex)
+        {
+            thisScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
 
-    }
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
 
-    public void CloseGame()
-    {
-        Application.Quit();
+        }
+
+        public void CloseGame()
+        {
+            Application.Quit();
+        }
     }
 }
