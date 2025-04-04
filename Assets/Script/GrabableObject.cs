@@ -14,12 +14,17 @@ public class GrabableObject : MonoBehaviour
 
     [SerializeField] private int painState = 0;
 
+    [Header("## Managers ## ")]
     public FaceManager faceManager;
     public AudioManager audioManager;
+
     [SerializeField] private GameObject spriteGameObject;
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private bool isAlive = false;
     //public SO_FaceStates state;
+
+    public AnimationManager animationManager;
+
 
     private void Awake()
     {
@@ -42,6 +47,7 @@ public class GrabableObject : MonoBehaviour
         objectRB.linearDamping = 10f;
         objectRB.angularDamping = 10f;
 
+
         if (notIngredient)
         {
             knifeCollider.enabled = false;
@@ -52,6 +58,9 @@ public class GrabableObject : MonoBehaviour
     {
         spriteGameObject.SetActive(true);
         meshRenderer.enabled = false;
+
+        faceManager.StateCommand(SO_FaceStates.BasicStates.Dumb);
+
     }
 
     public void Drop()
@@ -62,10 +71,14 @@ public class GrabableObject : MonoBehaviour
         objectRB.linearDamping = 1f;
         objectRB.angularDamping = 0.05f;
 
+
         if (notIngredient)
         {
             knifeCollider.enabled = false;
         }
+
+        faceManager.enabled = false;
+
     }
 
     private void FixedUpdate()
@@ -97,8 +110,10 @@ public class GrabableObject : MonoBehaviour
                 //furnace
                 painDelay = 0;
 
-                faceManager.StateCommand(SO_FaceStates.BasicStates.Shocked);
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Scared);
                 audioManager.AudioCommand(SO_FaceStates.Audio.Pain);
+                animationManager.AnimationCommand(SO_FaceStates.AnimationEffect.ScaleVertical);
+
 
                 GetComponent<AudioSource>().Play();
 
@@ -106,6 +121,7 @@ public class GrabableObject : MonoBehaviour
 
                 PainEffects(typeOfPain, painState);
 
+                //animationManager.AnimationCommand(SO_FaceStates.AnimationEffect.NoTransform);
                 audioManager.enabled = false;
 
                 break;
