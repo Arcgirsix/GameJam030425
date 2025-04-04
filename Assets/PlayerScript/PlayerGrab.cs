@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerGrab : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerGrab : MonoBehaviour
     [SerializeField] private LayerMask itemLayer = 3;
     [SerializeField] private LayerMask interactableLayer = 3;
     [SerializeField] private LayerMask buttonLayer = 3;
+
+    [SerializeField] private GameObject handImage;
 
     private InputSystem_Actions inputActions;
     private InputAction interactAction => inputActions.Player.Interact;
@@ -23,6 +26,12 @@ public class PlayerGrab : MonoBehaviour
     private GrabableObject grabableObject;
     private Interactable interactable;
     private Button button;
+
+
+    [SerializeField] private Sprite closedHand;
+    [SerializeField] private Sprite openHand;
+
+    [SerializeField] private DetectItem detectItem;
 
     private void Awake()
     {
@@ -84,6 +93,8 @@ public class PlayerGrab : MonoBehaviour
                 if (raycastHitItem.transform.TryGetComponent(out grabableObject))
                 {
                     grabableObject.Grab(objectGrabPointTransform);
+                    handImage.GetComponent<Image>().sprite = closedHand;
+                    detectItem.isItemHeld = true;
                     return;
                 }
             }
@@ -93,6 +104,9 @@ public class PlayerGrab : MonoBehaviour
         {
             grabableObject.Drop();
             grabableObject = null;
+            handImage.GetComponent<Image>().sprite = openHand;
+            detectItem.isItemHeld = false;
+
 
             objectGrabPointTransform.localPosition = objectGrabPointBasePosition;
 

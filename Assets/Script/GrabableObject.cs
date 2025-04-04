@@ -29,6 +29,10 @@ public class GrabableObject : MonoBehaviour
     {
         if (isAlive == false)
         {
+            if (notIngredient)
+            {
+                return;
+            }
             GetAlive();
             isAlive = true;
         }
