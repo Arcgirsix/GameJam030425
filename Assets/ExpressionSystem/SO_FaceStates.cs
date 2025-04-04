@@ -27,4 +27,11 @@ public class SO_FaceStates : ScriptableObject
         Pleasure,
         Drowning
     }
+
+    public enum AnimationEffect
+    {
+        ScaleVertical,
+        ScaleHorizontal,
+        Shake,
+    }
 }

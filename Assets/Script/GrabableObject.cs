@@ -16,6 +16,7 @@ public class GrabableObject : MonoBehaviour
 
     public FaceManager faceManager;
     public AudioManager audioManager;
+    public AnimationManager animationManager;
     //public SO_FaceStates state;
 
     private void Awake()
@@ -69,15 +70,16 @@ public class GrabableObject : MonoBehaviour
                 //furnace
                 painDelay = 0;
 
-                faceManager.StateCommand(SO_FaceStates.BasicStates.Shocked);
+                faceManager.StateCommand(SO_FaceStates.BasicStates.Scared);
                 audioManager.AudioCommand(SO_FaceStates.Audio.Pain);
+                animationManager.AnimationCommand(SO_FaceStates.AnimationEffect.ScaleVertical);
+
 
                 GetComponent<AudioSource>().Play();
 
                 Debug.Log("aled ausecour");
 
                 PainEffects(typeOfPain, painState);
-
                 audioManager.enabled = false;
 
                 break;
