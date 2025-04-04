@@ -9,21 +9,22 @@ public class AnimationManager : MonoBehaviour
 
     public void AnimationCommand(SO_FaceStates.AnimationEffect animationIndex)
     {
-        SelectAnimation(animationIndex);
+        SelectMouthAnimation(animationIndex);
+        SelectEyesAnimation(animationIndex);
     }
 
-    private void SelectAnimation(SO_FaceStates.AnimationEffect animationEffect)
+    private void SelectMouthAnimation(SO_FaceStates.AnimationEffect animationEffect)
     {
         int animationIndex = Array.IndexOf(Enum.GetValues(typeof(SO_FaceStates.AnimationEffect)), animationEffect);
 
         GameObject.Find("Mouth").GetComponent<Animator>().Play((AnimationClipsList[animationIndex]).ToString());
-    }
 
-    private void StopAnimation(SO_FaceStates.AnimationEffect animationEffect)
+    }
+    private void SelectEyesAnimation(SO_FaceStates.AnimationEffect animationEffect)
     {
         int animationIndex = Array.IndexOf(Enum.GetValues(typeof(SO_FaceStates.AnimationEffect)), animationEffect);
 
-        //GameObject.Find("Mouth").GetComponent<Animator>().;
+        GameObject.Find("Eyes").GetComponent<Animator>().Play((AnimationClipsList[animationIndex]).ToString());
 
     }
 

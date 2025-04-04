@@ -14,10 +14,10 @@ public class GrabableObject : MonoBehaviour
 
     [SerializeField] private int painState = 0;
 
+    [Header("## Managers ## ")]
     public FaceManager faceManager;
     public AudioManager audioManager;
     public AnimationManager animationManager;
-    //public SO_FaceStates state;
 
     private void Awake()
     {
@@ -30,6 +30,8 @@ public class GrabableObject : MonoBehaviour
         objectRB.useGravity = false;
         objectRB.linearDamping = 10f;
         objectRB.angularDamping = 10f;
+
+        faceManager.StateCommand(SO_FaceStates.BasicStates.Dumb);
     }
 
     public void Drop()
@@ -39,6 +41,8 @@ public class GrabableObject : MonoBehaviour
         objectRB.useGravity = true;
         objectRB.linearDamping = 1f;
         objectRB.angularDamping = 0.05f;
+
+        faceManager.enabled = false;
     }
 
     private void FixedUpdate()
@@ -80,6 +84,8 @@ public class GrabableObject : MonoBehaviour
                 Debug.Log("aled ausecour");
 
                 PainEffects(typeOfPain, painState);
+
+                //animationManager.AnimationCommand(SO_FaceStates.AnimationEffect.NoTransform);
                 audioManager.enabled = false;
 
                 break;
